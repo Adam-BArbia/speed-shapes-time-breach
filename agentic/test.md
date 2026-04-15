@@ -142,11 +142,11 @@ If any command fails:
 
 ## 8) Functional - Undo/Redo
 
-- [ ] Undo button works
-- [ ] Redo button works
-- [ ] Ctrl+Z triggers undo
-- [ ] Ctrl+Y triggers redo
-- [ ] Buttons correctly disable when no history is available
+- [+] Undo button works
+- [+] Redo button works
+- [+] Ctrl+Z triggers undo
+- [+] Ctrl+Y triggers redo
+- [+] Buttons correctly disable when no history is available
 [undo / redo controls are present; verify behavior in a manual pass]
 
 ## 9) Display Layout and UX

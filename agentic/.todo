@@ -62,7 +62,7 @@
 [ ] Keep all high-frequency actions popup-free @high
 [x] Implement UndoService with capped history (~20 actions) @high @done(26-04-11 19:22)
 [x] Implement redo stack invalidation after new actions @high @done(26-04-11 19:22)
-[ ] Register all state-changing operations as undoable commands @high
+[x] Register all state-changing operations as undoable commands @high @done(26-04-15)
 [x] Add keyboard shortcuts Ctrl+Z and Ctrl+Y @medium @done(26-04-11 19:22)
 [x] Add UI buttons for undo/redo status visibility @medium @done(26-04-11 19:22)
 [ ] Persist or safely reset history strategy on reload @medium
