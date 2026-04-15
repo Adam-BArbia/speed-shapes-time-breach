@@ -6,6 +6,7 @@
 [x] Create base routes for /display and /control @done(26-04-11 16:57)
 [x] Replace default starter template with router shell @done(26-04-11 16:58)
 [x] Add initial visual theme tokens and baseline page shells @done(26-04-11 16:58)
+[ ] Remove accidental gitlink entry speed-shapes-time-breach (mode 160000) unless submodule is intended @high
 [ ] Add ESLint config and scripts tuned for Angular 17+ @high
 [ ] Add Prettier formatting check script and optional pre-commit hook @medium
 [ ] Add environment constants for game defaults (timer, grid size, limits) @high

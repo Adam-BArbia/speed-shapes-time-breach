@@ -66,6 +66,10 @@ Priority C (quality):
 - Accessibility and keyboard focus polish.
 - Performance checks for animation + rapid operator input.
 
+Priority D (repo hygiene):
+- Remove accidental gitlink entry `speed-shapes-time-breach` (mode 160000) unless a real submodule is intended.
+- Ensure no nested repo artifacts are tracked without `.gitmodules` mapping.
+
 ## 5) Source of Truth Files for Continuation
 
 Read these first in this order:
@@ -85,7 +89,7 @@ Then inspect code starting from:
 ## 6) Practical Next Session Plan
 
 1. Run `npm run build` and `npm test -- --watch=false` to establish baseline.
-2. Execute manual gameplay checklist from `agentic/test.md` and annotate only observed outcomes.
-3. Close highest-risk functional gaps first: undo/redo completeness, question lifecycle consistency.
-4. Implement export and end-game mode.
-5. Final rehearsal pass with projector-oriented layout verification.
+2. Remove accidental gitlink entry `speed-shapes-time-breach` if submodule usage is not intentional.
+3. Execute manual gameplay checklist from `agentic/test.md` and annotate only observed outcomes.
+4. Close highest-risk functional gaps first: undo/redo completeness, question lifecycle consistency.
+5. Implement export and final rehearsal pass with projector-oriented layout verification.

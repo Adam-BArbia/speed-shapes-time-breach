@@ -1,4 +1,4 @@
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { GameStateService } from '../state/game-state.service';
 
 export type TimerStatus = 'idle' | 'running' | 'paused' | 'ended';
@@ -29,6 +29,26 @@ export class TimerService {
     return remaining <= 30 && remaining > 0 && this.timerStateSignal().status === 'running';
   });
   readonly isEnded = computed(() => this.timerStateSignal().remainingSec <= 0);
+
+  constructor() {
+    // Keep timer state synchronized with shared persisted game state updates
+    // (including storage-driven updates from other tabs).
+    effect(() => {
+      const sharedTimer = this.gameState.timer();
+      this.timerStateSignal.set({
+        durationSec: sharedTimer.durationSec,
+        remainingSec: sharedTimer.remainingSec,
+        status: sharedTimer.status,
+        lastTickAt: sharedTimer.lastTickAt,
+      });
+
+      if (sharedTimer.status === 'running') {
+        this.startTicking();
+      } else {
+        this.stopTicking();
+      }
+    });
+  }
 
   start(durationSec: number = DEFAULT_DURATION_SEC): void {
     this.timerStateSignal.set({
