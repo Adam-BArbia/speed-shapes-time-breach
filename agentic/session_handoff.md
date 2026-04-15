@@ -30,12 +30,13 @@ Done and stable:
   - prioritizes longest-chain direction, random tie-break on equal priority
 - Connection visual overlay in grid (line rendering over cells).
 - Build and tests passing in recent runs.
+- End-game display mode: grid-only layout with TIME'S UP banner when timer ends.
 
 Partially done / still risky:
 - Undo/redo exists in UI/services but not all state mutations are fully command-registered.
-- End-game display mode (grid-only) is not complete.
 - Export features (PNG/JSON) are not implemented.
 - Some milestone checkboxes in `.todo` are optimistic compared to strict manual event testing.
+- Cross-tab sync via storage event listener: "/display" auto-updates when "/control" writes state.
 
 ## 3) Current Behavior Expectations
 
