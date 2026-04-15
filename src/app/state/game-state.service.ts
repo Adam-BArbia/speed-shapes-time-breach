@@ -113,6 +113,10 @@ export class GameStateService {
     this.persistState();
   }
 
+  reloadFromStorage(): void {
+    this.stateSignal.set(this.loadState());
+  }
+
   resetBoardState(): void {
     this.updateState((state) => ({
       ...state,

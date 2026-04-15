@@ -105,6 +105,7 @@ h2 {
 	text-overflow: ellipsis;
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 	-webkit-box-orient: vertical;
 }
 
@@ -130,4 +131,57 @@ h2 {
 	.teams-panel {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
+}
+
+/* End-game layout: grid takes full width */
+.end-game-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+ 
+.end-game-layout .grid-stage {
+  height: 100%;
+}
+ 
+.end-game-layout .grid-stage app-grid {
+  --grid-max-size: calc(100dvh - 4.5rem);
+}
+ 
+/* TIME'S UP banner */
+.end-game-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0.8rem;
+  background: rgba(255, 60, 80, 0.18);
+  border-bottom: 1px solid rgba(255, 60, 80, 0.55);
+  height: 2.8rem;
+  flex-shrink: 0;
+}
+ 
+.end-game-label {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff3c50;
+  text-shadow: 0 0 18px rgba(255, 60, 80, 0.7);
+}
+ 
+.end-game-stability {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  letter-spacing: 0.06em;
+}
+ 
+/* Make the screen a flex column in end-game so banner + grid stack */
+.screen-display.end-game {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+ 
+.screen-display.end-game .display-layout {
+  flex: 1;
+  min-height: 0;
 }
