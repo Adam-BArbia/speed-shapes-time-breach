@@ -1,0 +1,74 @@
+<section class="screen screen-control">
+	<header class="screen-header">
+		<h1>Control Panel</h1>
+		<p>Operator Interface</p>
+	</header>
+
+	<div class="control-layout">
+		<app-grid
+			[cells]="grid()"
+			[teams]="teams()"
+			[connections]="connections()"
+			[interactive]="true"
+			[compact]="true"
+			[selectedCellIndex]="selectedCellIndex()"
+			(cellClicked)="onCellSelected($event)"
+		/>
+
+		<section class="action-panel">
+			<div class="undo-redo-controls">
+				<button type="button" [disabled]="!canUndo()" (click)="undo()" title="Ctrl+Z">↶ Undo</button>
+				<button type="button" [disabled]="!canRedo()" (click)="redo()" title="Ctrl+Y">↷ Redo</button>
+			</div>
+
+			<h2>Quick Actions</h2>
+
+			@if (selectedCell()) {
+				<p class="meta">Selected cell: #{{ selectedCell()!.index }}</p>
+				<p class="meta">State: {{ selectedCell()!.state }}</p>
+			} @else {
+				<p class="meta">Select a cell to start.</p>
+			}
+
+			<label for="team">Assign team</label>
+			<select id="team" [ngModel]="selectedTeamId()" (ngModelChange)="selectedTeamId.set($event)">
+				@for (team of teams(); track team.id) {
+					<option [value]="team.id">{{ team.name }}</option>
+				}
+			</select>
+
+			<div class="actions">
+				<button type="button" (click)="assignPending()">Set Pending</button>
+				<button type="button" (click)="confirmSelected()">Mark Correct</button>
+				<button type="button" (click)="rejectSelected()">Mark Wrong</button>
+				<button type="button" class="danger" (click)="clearSelected()">Clear Cell</button>
+				<button type="button" class="danger" (click)="resetBoard()">Reset Board</button>
+			</div>
+
+			<h2>Timer</h2>
+			<p class="meta">{{ formatRemainingTimer() }} ({{ timerStatus() }})</p>
+			<div class="actions timer-actions">
+				<button type="button" (click)="startTimer()">Start</button>
+				<button type="button" (click)="pauseTimer()">Pause</button>
+				<button type="button" (click)="resumeTimer()">Resume</button>
+				<button type="button" (click)="resetTimer()">Reset</button>
+			</div>
+
+			<h2>Sound</h2>
+			<label class="inline-label">
+				<input type="checkbox" [ngModel]="soundMuted()" (ngModelChange)="setSoundMuted($event)" />
+				Mute
+			</label>
+			<label for="volume">Volume ({{ (soundVolume() * 100).toFixed(0) }}%)</label>
+			<input
+				id="volume"
+				type="range"
+				min="0"
+				max="1"
+				step="0.01"
+				[ngModel]="soundVolume()"
+				(ngModelChange)="setSoundVolume($event)"
+			/>
+		</section>
+	</div>
+</section>

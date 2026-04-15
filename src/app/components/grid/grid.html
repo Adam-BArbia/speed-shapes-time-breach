@@ -1,0 +1,42 @@
+<section class="grid" [class.grid-compact]="compact()">
+  <svg class="connection-overlay" viewBox="0 0 100 100" preserveAspectRatio="none">
+    @for (line of connectionLines(); track $index) {
+      <line
+        [attr.x1]="line.x1"
+        [attr.y1]="line.y1"
+        [attr.x2]="line.x2"
+        [attr.y2]="line.y2"
+        [attr.stroke]="line.teamColor"
+        [class.is-new]="line.isNew"
+        class="connection-line-halo"
+      />
+      <line
+        [attr.x1]="line.x1"
+        [attr.y1]="line.y1"
+        [attr.x2]="line.x2"
+        [attr.y2]="line.y2"
+        [attr.stroke]="line.teamColor"
+        [class.is-new]="line.isNew"
+        class="connection-line"
+      />
+    }
+  </svg>
+
+  @for (cell of cells(); track trackCell($index, cell)) {
+    <button
+      type="button"
+      class="grid-cell"
+      [class.is-selected]="isSelected(cell)"
+      [class.is-empty]="cell.state === 'empty'"
+      [class.is-pending]="cell.state === 'pending'"
+      [class.is-confirmed]="cell.state === 'confirmed'"
+      [class.is-used]="cell.state === 'used'"
+      [style.--team-color]="cellColor(cell)"
+      [disabled]="!interactive()"
+      [attr.aria-label]="'Cell ' + cell.index"
+      (click)="onCellClick(cell)"
+    >
+      <span class="cell-index">{{ cell.index }}</span>
+    </button>
+  }
+</section>

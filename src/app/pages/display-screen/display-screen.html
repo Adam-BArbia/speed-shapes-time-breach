@@ -1,0 +1,29 @@
+<section class="screen screen-display">
+	<div class="display-layout">
+		<aside class="info-panel">
+			<div class="event-title">
+				<h1>Speed Shapes: Time Breach</h1>
+				<p>Stability {{ stabilityPercent() }}%</p>
+			</div>
+			<app-timer-display [remainingSec]="timerRemainingSec()" [status]="timerStatus()" />
+		</aside>
+
+		<div class="grid-stage">
+			<app-grid [cells]="grid()" [teams]="teams()" [connections]="connections()" [interactive]="false" />
+		</div>
+
+		<aside class="teams-panel">
+			@for (row of pendingQuestionsByTeam(); track trackTeam($index, row)) {
+				<article class="team-card" [style.--team-color]="row.team.color">
+					<h2>{{ row.team.name }}</h2>
+					@if (row.questionId) {
+						<p class="qid">Q{{ row.questionId }}</p>
+						<p class="question" dir="rtl">{{ row.questionText }}</p>
+					} @else {
+						<p class="idle">No active question</p>
+					}
+				</article>
+			}
+		</aside>
+	</div>
+</section>

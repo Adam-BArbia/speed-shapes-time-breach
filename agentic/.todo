@@ -1,0 +1,149 @@
+# Speed Shapes: Time Breach Full Project TODO
+
+## Milestone 0 - Workspace and Scaffold
+
+[x] Phase 0 scaffold Angular standalone app with routing @done(26-04-11 16:57)
+[x] Create base routes for /display and /control @done(26-04-11 16:57)
+[x] Replace default starter template with router shell @done(26-04-11 16:58)
+[x] Add initial visual theme tokens and baseline page shells @done(26-04-11 16:58)
+[ ] Add ESLint config and scripts tuned for Angular 17+ @high
+[ ] Add Prettier formatting check script and optional pre-commit hook @medium
+[ ] Add environment constants for game defaults (timer, grid size, limits) @high
+
+## Milestone 1 - Game Foundation
+
+[ ] Create shared types: Team, CellState, Cell, Connection, TimerState, GameState @high
+[ ] Create enums/unions for statuses (empty, pending, confirmed, used) @high
+[ ] Define action contracts for undo/redo command model @medium
+[x] Define localStorage schema version and migration strategy @high
+[x] Implement GameStateService with Angular signals @high @done(26-04-11 16:12)
+[x] Implement initial 8x8 grid generation (1..64 left->right, top->bottom) @high @done(26-04-11 16:12)
+[x] Implement team defaults for 6 teams (name, color, shape) @high @done(26-04-11 16:12)
+[x] Implement computed stability percent (confirmed / 64) @medium @done(26-04-11 16:12)
+[x] Implement central mutation APIs for all operator actions @high @done(26-04-11 16:12)
+[x] Implement state snapshot serializer/deserializer @high @done(26-04-11 16:12)
+[x] Implement localStorage adapter with key namespace @high @done(26-04-11 16:12)
+[x] Auto-save on every meaningful state transition @high @done(26-04-11 16:12)
+[x] Hydrate state on boot with schema validation @high @done(26-04-11 16:12)
+[x] Add safe fallback to fresh state if storage is invalid @high @done(26-04-11 16:12)
+[ ] Add migration path for future schema versions @medium
+
+## Milestone 2 - Live Gameplay Loop
+
+[x] Add local Arabic JSON question bank file and loader service @high @done(26-04-11 16:35)
+[x] Bind question id to cell index @high @done(26-04-11 16:35)
+[x] Implement lock lifecycle: available -> pending-assigned -> resolved @high @done(26-04-11 16:35)
+[ ] Ensure rejected answers release question back to available pool @high
+[ ] Ensure correct answers permanently resolve and remove question @high
+[ ] Enforce one active pending question per team column @medium
+[x] Render question text in Arabic with RTL-safe presentation @high @done(26-04-11 16:35)
+[x] Build GridComponent for 8x8 rendering with trackBy @high @done(26-04-11 16:35)
+[x] Build CellComponent with visual states (empty/pending/confirmed/used) @high @done(26-04-11 16:35)
+[x] Implement fast click selection and focused cell affordances @high @done(26-04-11 16:35)
+[x] Add cell labels/index display tuned for projector readability @medium @done(26-04-11 16:35)
+[ ] Add accessibility labels and keyboard focus support @medium
+[x] Build title + stability header @high @done(26-04-11 16:35)
+[x] Build large timer placement top-right @high @done(26-04-11 19:22)
+[x] Render grid centered and scalable for projector @high @done(26-04-11 16:35)
+[x] Build 6 team side columns with current active question per team @high @done(26-04-11 16:35)
+[ ] Add end-game mode layout (grid-only, hide timer and team columns) @medium
+[ ] Add smooth but subtle animations for transitions @medium
+
+## Milestone 3 - Operator Control Surface
+
+[x] Build fast inline action dock for selected cell @high @done(26-04-11 16:35)
+[x] Implement assign team action @high @done(26-04-11 16:35)
+[x] Implement mark answer correct action @high @done(26-04-11 16:35)
+[x] Implement mark answer wrong action @high @done(26-04-11 16:35)
+[ ] Implement manual override actions (edit/reassign/clear) @high
+[ ] Implement remove connection action @high
+[ ] Build config panel for teams and timer defaults @medium
+[ ] Keep all high-frequency actions popup-free @high
+[x] Implement UndoService with capped history (~20 actions) @high @done(26-04-11 19:22)
+[x] Implement redo stack invalidation after new actions @high @done(26-04-11 19:22)
+[ ] Register all state-changing operations as undoable commands @high
+[x] Add keyboard shortcuts Ctrl+Z and Ctrl+Y @medium @done(26-04-11 19:22)
+[x] Add UI buttons for undo/redo status visibility @medium @done(26-04-11 19:22)
+[ ] Persist or safely reset history strategy on reload @medium
+[x] Implement TimerService (start/pause/resume/reset) @high @done(26-04-11 19:22)
+[x] Default duration to 30 minutes @high @done(26-04-11 19:22)
+[x] Compute remaining time using timestamps to avoid drift @high @done(26-04-11 19:22)
+[x] Trigger ticking threshold event at 30 seconds @medium @done(26-04-15 11:25)
+[x] Trigger time-up event at 0 without locking edits @high @done(26-04-11 19:22)
+[x] Sync timer state to persistence @medium @done(26-04-15 11:25)
+[x] Implement SoundService and preload assets @medium @done(26-04-15 11:25)
+[x] Add correct answer sound @medium @done(26-04-15 11:25)
+[x] Add wrong answer sound @medium @done(26-04-15 11:25)
+[x] Add connection sound @medium @done(26-04-15 11:25)
+[x] Add ticking loop in last 30 seconds @medium @done(26-04-15 11:25)
+[x] Add loud buzzer at 0 @medium @done(26-04-15 11:25)
+[x] Add mute/volume controls for operator safety @low @done(26-04-15 11:25)
+[x] Prevent duplicate overlapping playback bugs @high @done(26-04-15 11:25)
+
+## Milestone 4 - Connection System and Feedback
+
+[x] Implement directional scanners (H, V, diag-right, diag-left) @high @done(26-04-13 18:23)
+[x] Detect valid connection groups of exactly 3 including newly confirmed shape @high @done(26-04-13 18:23)
+[x] Enforce one-connection-per-shape globally @high @done(26-04-13 18:23)
+[x] Handle >3 chains by selecting only one valid trio @high @done(26-04-13 18:23)
+[x] Prioritize by longest contiguous chain direction @high @done(26-04-13 18:23)
+[x] Apply random tie-break for equal-priority candidates @medium @done(26-04-13 18:23)
+[x] Store connection metadata and ownership @high @done(26-04-13 18:23)
+[x] Mark connected shapes as used/visually faded @high @done(26-04-13 18:23)
+[x] Draw animated connection line over 3 cells @medium @done(26-04-13 18:43)
+[x] Add glow pulse effect on connection creation @medium @done(26-04-13 18:43)
+[ ] Add lightweight particle/flare accent (optional, performance safe) @low
+[ ] Ensure animation performance on low-power devices @high
+
+## Milestone 5 - Export, Polish, and Performance
+
+[ ] Implement export PNG (title + stability + grid) @medium
+[ ] Implement export JSON full game state @high
+[ ] Validate exported JSON can rehydrate state accurately @high
+[ ] Add timestamped file naming @low
+[ ] Use trackBy in all repeaters (grid, teams, questions) @high
+[ ] Minimize re-renders with computed slices/signals @high
+[ ] Avoid expensive deep copies in hot paths @high
+[ ] Benchmark rapid operator click sequences @medium
+[ ] Verify no dropped frames during connection animations @high
+[ ] Finalize sci-fi visual language and typography @medium
+[ ] Ensure color contrast and readability on projector @high
+[ ] Tune spacing and sizing for operator speed @high
+[ ] Add subtle load/reveal motion (no distracting effects) @low
+[ ] Verify responsive behavior for laptop control + large display @high
+
+## Milestone 6 - Testing and Launch
+
+[ ] Test grid index mapping and coordinate helpers @high
+[ ] Test question lock lifecycle transitions @high
+[ ] Test Arabic question rendering and RTL presentation in question panels @high
+[ ] Test correct/wrong answer flows and state mutations @high
+[ ] Test stability percentage computation @medium
+[ ] Test connection detection for all 4 directions @high
+[ ] Test exactly-3 rule in long chains @high
+[ ] Test one-connection-per-shape enforcement @high
+[ ] Test tie-break selection logic determinism boundaries @medium
+[ ] Test timer transitions and threshold events @high
+[ ] Test undo/redo integrity across mixed action sequences @high
+[ ] Test localStorage hydration, fallback, and migration paths @high
+[ ] Test GridComponent rendering and state classes @high
+[ ] Test CellComponent interaction events @high
+[ ] Test ControlPanel quick-action workflows @high
+[ ] Test DisplayScreen rendering from shared state @high
+[ ] Test team column current-question behavior @medium
+[ ] Test end-game mode UI switch after timer completion @high
+[ ] Test export actions wiring and outputs @medium
+[ ] Run full game simulation from empty board to timer end @high
+[ ] Stress test with rapid repeated operator interactions @high
+[ ] Verify behavior after page reload at multiple game stages @high
+[ ] Verify offline operation with network disabled @high
+[ ] Verify sound cues timing and volume balance in venue-like setup @medium
+[ ] Verify projector readability at distance @high
+[ ] Verify keyboard shortcuts reliability under focus changes @high
+[ ] Verify manual override can recover from accidental operations @high
+[ ] Create operator quick-start checklist @medium
+[ ] Create referee/end-game validation checklist @medium
+[ ] Create troubleshooting guide (audio, storage reset, timer drift) @medium
+[ ] Build production bundle and smoke test on target machine @high
+[ ] Lock final defaults and backup/export procedure @high
+[ ] Tag release candidate and archive tested build @medium

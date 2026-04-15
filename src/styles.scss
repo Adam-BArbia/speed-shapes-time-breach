@@ -1,0 +1,31 @@
+:root {
+	--color-bg-deep: #070d1e;
+	--color-bg-mid: #0e1a37;
+	--color-bg-glow: #1a0f3e;
+	--color-text-main: #d9ecff;
+	--color-text-muted: #9db4d3;
+	--color-accent-cyan: #11d6ff;
+	--color-accent-violet: #9f72ff;
+	--color-panel-bg: rgba(11, 20, 42, 0.7);
+	--color-panel-border: rgba(95, 142, 221, 0.38);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	color: var(--color-text-main);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background:
+		radial-gradient(circle at 12% 10%, rgba(17, 214, 255, 0.22), transparent 33%),
+		radial-gradient(circle at 85% 18%, rgba(159, 114, 255, 0.2), transparent 34%),
+		linear-gradient(150deg, var(--color-bg-deep), var(--color-bg-mid) 58%, var(--color-bg-glow));
+	background-attachment: fixed;
+}
