@@ -46,7 +46,7 @@
 [x] Build large timer placement top-right @high @done(26-04-11 19:22)
 [x] Render grid centered and scalable for projector @high @done(26-04-11 16:35)
 [x] Build 6 team side columns with current active question per team @high @done(26-04-11 16:35)
-[ ] Add end-game mode layout (grid-only, hide timer and team columns) @medium
+[x] Add end-game mode layout (grid-only, hide timer and team columns) @done
 [ ] Add smooth but subtle animations for transitions @medium
 
 ## Milestone 3 - Operator Control Surface

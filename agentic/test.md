@@ -156,6 +156,10 @@ If any command fails:
 - [+] Grid remains centered and occupies most available center area
 - [~] Team cards occupy right side and are readable[can still be bigger]
 - [+] Stability percentage updates live after state changes
+- [~] /display updates live in a separate tab when /control makes changes (cross-tab-sync)[ doesn't work for the timer which is still on manual reload]
+- [+] End-game banner appears with TIME'S UP and final stability when timer hits 0
+- [+] Info panel and teams panel are hidden in end-game mode
+- [+] Grid expands to fill full width in end-game mode
 
 ## 10) Persistence and Recovery
 
