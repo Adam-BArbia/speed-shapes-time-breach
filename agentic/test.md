@@ -115,6 +115,12 @@ If any command fails:
 - [+] Visual fades to non-new state after animation window
 - [+] No click interaction blocked by overlay
 [connection overlay now sits above cells with pointer-events disabled]
+- [+] Team-specific SVG shape renders correctly in all non-empty cells
+- [+] Shape color matches team color mapping
+- [+] Pending state renders outline-only shape
+- [+] Confirmed state renders filled shape
+- [+] Used state renders faded shape with reduced glow
+- [+] Cell index remains visible and does not overlap shape
 
 ## 6) Functional - Timer
 
@@ -160,6 +166,8 @@ If any command fails:
 - [+] End-game banner appears with TIME'S UP and final stability when timer hits 0
 - [+] Info panel and teams panel are hidden in end-game mode
 - [+] Grid expands to fill full width in end-game mode
+- [+] Team shapes are clearly visible from projector distance
+- [+] SVG shapes remain centered at all tested screen sizes
 
 ## 10) Persistence and Recovery
 
@@ -167,7 +175,8 @@ If any command fails:
 - [+] Reload browser and verify connections restored
 - [+] Reload browser and verify timer restored
 - [+] Reload browser and verify team config restored
-- [ ] Corrupted localStorage falls back safely to valid default state [needs a deliberate invalid localStorage test]
+- [+] Corrupted localStorage falls back safely to valid default state [automated test added]
+- [+] Wrong schema version falls back safely to valid default state [automated test added]
 
 ## 11) Integration Scenarios (End-to-End)
 
@@ -176,6 +185,8 @@ If any command fails:
 - [ ] Scenario C: Rapid operator actions (20+ clicks/min) without UI lag or state corruption [manual stress test still recommended]
 - [+] Scenario D: Timer hits 30 sec during gameplay and ticking starts correctly
 - [+] Scenario E: Timer reaches 0 and buzzer plays while board remains editable
+- [+] Export JSON downloads a valid file with correct timestamp in filename
+- [+] Exported JSON can be pasted into localStorage and rehydrates state on reload
 
 ## 12) Performance and Reliability
 
@@ -183,6 +194,7 @@ If any command fails:
 - [+] No major input lag on `/control`
 - [ ] Memory remains stable during a full 30-minute session
 - [ ] No console errors during normal operation
+- [ ] SVG shape rendering causes no noticeable lag during rapid updates
 
 ## 13) Live Event Dry Run (Final Gate)
 

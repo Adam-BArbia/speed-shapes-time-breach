@@ -88,4 +88,24 @@ describe('GameStateService', () => {
     const usedCount = service.grid().filter((cell) => cell.state === 'used').length;
     expect(usedCount).toBe(3);
   });
+
+    it('should fall back to a fresh state when localStorage contains invalid JSON', () => {
+    window.localStorage.setItem('speed-shapes-time-breach.game-state', '{broken json{{');
+    const service = TestBed.inject(GameStateService);
+ 
+    expect(service.grid()).toHaveLength(64);
+    expect(service.teams()).toHaveLength(6);
+    expect(service.stabilityPercent()).toBe(0);
+  });
+ 
+  it('should fall back to a fresh state when localStorage schema version is wrong', () => {
+    window.localStorage.setItem(
+      'speed-shapes-time-breach.game-state',
+      JSON.stringify({ schemaVersion: 999, state: { grid: [], teams: [] } }),
+    );
+    const service = TestBed.inject(GameStateService);
+ 
+    expect(service.grid()).toHaveLength(64);
+    expect(service.teams()).toHaveLength(6);
+  });
 });

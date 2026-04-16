@@ -98,16 +98,20 @@
 
 ## Milestone 5 - Export, Polish, and Performance
 
-[ ] Implement export PNG (title + stability + grid) @medium
-[ ] Implement export JSON full game state @high
-[ ] Validate exported JSON can rehydrate state accurately @high
-[ ] Add timestamped file naming @low
+[x] Implement export PNG (title + stability + grid) @medium @done(26-04-15)
+[x] Implement export JSON full game state @high @done(26-04-15)
+[x] Validate exported JSON can rehydrate state accurately @high @done(26-04-15)
+[x] Add timestamped file naming @low @done(26-04-15)
 [ ] Use trackBy in all repeaters (grid, teams, questions) @high
 [ ] Minimize re-renders with computed slices/signals @high
 [ ] Avoid expensive deep copies in hot paths @high
 [ ] Benchmark rapid operator click sequences @medium
 [ ] Verify no dropped frames during connection animations @high
 [ ] Finalize sci-fi visual language and typography @medium
+[x] Add inline SVG team shape rendering inside non-empty grid cells @high @done(26-04-16 20:00)
+[x] Add computed teamShapes map (teamId -> shape) in GridComponent @medium @done(26-04-16 20:00)
+[x] Add pending/used visual shape states (outline + fade) @medium @done(26-04-16 20:00)
+[x] Improve cell internal layout for centered shape + absolute index label @medium @done(26-04-16 20:00)
 [ ] Ensure color contrast and readability on projector @high
 [ ] Tune spacing and sizing for operator speed @high
 [ ] Add subtle load/reveal motion (no distracting effects) @low
@@ -126,7 +130,7 @@
 [ ] Test tie-break selection logic determinism boundaries @medium
 [ ] Test timer transitions and threshold events @high
 [ ] Test undo/redo integrity across mixed action sequences @high
-[ ] Test localStorage hydration, fallback, and migration paths @high
+[x] Test localStorage hydration, fallback, and migration paths @high @done(26-04-15)
 [ ] Test GridComponent rendering and state classes @high
 [ ] Test CellComponent interaction events @high
 [ ] Test ControlPanel quick-action workflows @high

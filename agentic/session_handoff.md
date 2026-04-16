@@ -32,7 +32,6 @@ Done and stable:
 - Build and tests passing in recent runs.
 
 Partially done / still risky:
-- Export features (PNG/JSON) are not implemented.
 - Some milestone checkboxes in `.todo` are optimistic compared to strict manual event testing.
 
 ## 3) Current Behavior Expectations
