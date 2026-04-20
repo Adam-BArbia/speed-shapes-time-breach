@@ -6,6 +6,7 @@ import { TimerService } from '../../services/timer.service';
 import { GameStateService } from '../../state/game-state.service';
 import { UndoService } from '../../state/undo.service';
 import { GameState } from '../../state/game-state.models';
+import { ExportService } from '../../services/export.service';
  
 @Component({
   selector: 'app-control-panel',
@@ -19,6 +20,7 @@ export class ControlPanel {
   private readonly undoService = inject(UndoService);
   private readonly sound = inject(SoundService);
   private readonly timerService = inject(TimerService);
+  private readonly exportService = inject(ExportService);
  
   readonly grid = this.gameState.grid;
   readonly teams = this.gameState.teams;
@@ -127,6 +129,16 @@ export class ControlPanel {
     this.undoService.clear();
     this.selectedCellIndex.set(null);
   }
+
+    // ── export json+png ────────────────────────────────────────────────────────────────────
+  exportJson(): void {
+    this.exportService.exportJson();
+  }
+
+  exportPng(): void {
+    this.exportService.exportPng();  // no element needed
+}
+ 
  
   // ── Timer ────────────────────────────────────────────────────────────────────
  

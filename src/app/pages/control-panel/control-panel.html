@@ -69,6 +69,11 @@
 				[ngModel]="soundVolume()"
 				(ngModelChange)="setSoundVolume($event)"
 			/>
+			<h2>Export</h2>
+  			<div class="actions">
+    			<button type="button" (click)="exportJson()">Export JSON</button>
+    			<button type="button" (click)="exportPng()">Export PNG</button>
+  				</div>
 		</section>
 	</div>
 </section>
