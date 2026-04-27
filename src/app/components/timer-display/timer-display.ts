@@ -30,28 +30,35 @@ import { CommonModule } from '@angular/common';
     }
 
     .time-value {
-      font-size: clamp(1.2rem, 2.6vw, 2.1rem);
+      font-size: clamp(0.8rem, 3.5vmin, 4.5rem);
       font-weight: 700;
       letter-spacing: 0.04em;
       color: var(--color-accent-cyan);
       line-height: 1;
       font-family: 'Courier New', monospace;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.1em;
     }
 
     .minutes {
       display: inline-block;
-      min-width: 2.5rem;
+      min-width: auto;
       text-align: right;
+      width: 2.5ch;
     }
 
     .separator {
-      margin: 0 0.15em;
+      margin: 0;
       opacity: 0.9;
+      flex-shrink: 0;
     }
 
     .seconds {
       display: inline-block;
-      min-width: 2.5rem;
+      min-width: auto;
+      width: 2.5ch;
     }
 
     .status {
