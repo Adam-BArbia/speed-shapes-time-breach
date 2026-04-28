@@ -29,12 +29,12 @@ const DIRECTIONS: DirectionVector[] = [
 ];
 
 const DEFAULT_TEAMS: Team[] = [
-  { id: 'team-1', name: 'Alpha', color: '#11d6ff', shape: 'circle' },
-  { id: 'team-2', name: 'Beta', color: '#9f72ff', shape: 'diamond' },
-  { id: 'team-3', name: 'Gamma', color: '#54f0b3', shape: 'triangle' },
-  { id: 'team-4', name: 'Delta', color: '#ffb347', shape: 'square' },
-  { id: 'team-5', name: 'Epsilon', color: '#ff6b9a', shape: 'hexagon' },
-  { id: 'team-6', name: 'Zeta', color: '#7f8cff', shape: 'star' },
+  { id: 'team-1', name: 'LAB', color: '#11d6ff', shape: 'circle' },
+  { id: 'team-2', name: 'LAC', color: '#9f72ff', shape: 'diamond' },
+  { id: 'team-3', name: 'LHS1', color: '#54f0b3', shape: 'triangle' },
+  { id: 'team-4', name: 'LHS2', color: '#ffb347', shape: 'square' },
+  { id: 'team-5', name: 'LSBH', color: '#ff6b9a', shape: 'hexagon' },
+  { id: 'team-6', name: 'LDG', color: '#7f8cff', shape: 'star' },
 ];
 
 function createInitialGrid(): Cell[] {
